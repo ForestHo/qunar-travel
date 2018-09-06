@@ -45,8 +45,6 @@ export default {
 	// 当页面重新被显示的时候，activated钩子会被重新执行
 	activated () {
 		// console.log('activated');
-		console.log(this.lastCity);
-		console.log(this.city);
 		if(this.lastCity !== this.city){
 			this.lastCity = this.city
 			this.getHomeInfo();

@@ -2,15 +2,23 @@
 	<div>
 		<div class="title">热销推荐</div>
 		<ul>
-			<li class="item border-bottom" v-for="item of list"
-						:key="item.id">
+			<!-- 使用tag="li"，这个router-link标签vue就不会把渲染成
+				一个a标签，而是替换成一个li标签；
+				:to="'/detail/'+item.id" 动态绑定路由跳转的url-->
+			<router-link 
+				tag="li"
+				class="item border-bottom" 
+				v-for="item of list"
+				:key="item.id"
+				:to="'/detail/'+item.id"
+				>
 				<img class="item-img" :src="item.imgUrl">
 				<div class="item-info">
 					<p class="item-title">{{item.title}}</p>
 					<p class="item-desc">{{item.desc}}</p>
 					<button class="item-button">查看详情</button>
 				</div>
-			</li>
+			</router-link>
 		</ul>
 	</div>
 </template>
