@@ -9,7 +9,9 @@
 			<ul>
 				<li class="search-item border-bottom" 
 					v-for="item of list"
-					:key="item.id">
+					:key="item.id"
+					@click="handleCityClick(item.name)"
+					>
 					{{item.name}}
 				</li>
 				<li class="search-item border-bottom"
@@ -23,6 +25,7 @@
 
 <script>
 import BScroll from 'better-scroll'
+import { mapMutations } from 'vuex'
 
 export default {
 	name: 'CitySearch',
@@ -37,6 +40,17 @@ export default {
 			scroll: {},
 			resultFlag: false
 		}
+	},
+	methods: {
+		handleCityClick (city) {
+			// this.$store.commit('changeCity', city)
+			this.changeCity(city)
+			this.keyword = ''
+			this.$router.push('/')	
+		},
+		// 有一个mutation叫作changeCity，然后把这个mutation映射到
+		// 当前组件的changeCity方法里
+		...mapMutations(['changeCity'])
 	},
 	computed: {
 		hasNoData () {

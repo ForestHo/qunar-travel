@@ -5,7 +5,7 @@
 				<div class="title border-topbottom">当前城市</div>
 				<div class="button-list">
 					<div class="button-wrapper">
-						<div class="button">北京</div>
+						<div class="button">{{this.currentCity}}</div>
 					</div>
 				</div>
 			</div>
@@ -14,7 +14,9 @@
 				<div class="button-list">
 					<div class="button-wrapper" 
 						 v-for="item of hotcities"
-						 :key="item.id">
+						 :key="item.id"
+						 @click="handleCityClick(item.name)"
+						 >
 						<div class="button">{{item.name}}</div>
 					</div>
 				</div>
@@ -29,7 +31,9 @@
 					<div 
 						class="item border-bottom" 
 						v-for="innerItem of item"
-						:key="innerItem.id">
+						:key="innerItem.id"
+						@click="handleCityClick(innerItem.name)"
+						>
 						{{innerItem.name}}
 					</div>
 				</div>
@@ -40,6 +44,7 @@
 
 <script>
 import BScroll from 'better-scroll'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
 	name: 'CityList',
@@ -47,6 +52,25 @@ export default {
 		return {
 			scroll: {}
 		}
+	},
+	// 把vuex中的city公用的数据映射到当前组件的currentCity计算属性里
+	computed: {
+		...mapState({
+			currentCity: 'city'
+		})
+	},	
+	methods: {
+		handleCityClick (city) {
+			// console.log(city);
+			// changeCity 是action
+			// this.$store.dispatch('changeCity', city)
+			// this.$store.commit('changeCity', city)
+			this.changeCity(city)
+			this.$router.push('/')
+		},
+		// 有一个mutation叫作changeCity，然后把这个mutation映射到
+		// 当前组件的changeCity方法里
+		...mapMutations(['changeCity'])
 	},
 	props: {
 		hotcities: Array,
