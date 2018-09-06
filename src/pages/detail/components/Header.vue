@@ -51,6 +51,12 @@ export default {
 	// activated这个钩子就会执行
 	activated () {
 		window.addEventListener('scroll', this.handleScroll)
+	},
+	// 页面即将被隐藏，或者说页面即将被替换成新的页面的时候，
+	// 这个组件的deactivated这个生命周期钩子会被执行
+	// 页面被隐藏的时候，对scroll这个全局事件进行解绑
+	deactivated () {
+		window.removeEventListener('scroll', this.handleScroll)
 	}
 }
 </script>
