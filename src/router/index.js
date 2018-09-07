@@ -24,5 +24,10 @@ export default new Router({
       name: 'Detail',
       component: Detail
     }
-  ]
+  ],
+  // 每次做路由页面切换的时候，都让新进入显示的页面x,y轴的
+  // 初始位置都为0，也就是让页面切换的时候，始终回到最顶部
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
