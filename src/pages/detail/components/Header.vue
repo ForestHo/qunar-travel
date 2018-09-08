@@ -57,6 +57,12 @@ export default {
 	// 页面被隐藏的时候，对scroll这个全局事件进行解绑
 	deactivated () {
 		window.removeEventListener('scroll', this.handleScroll)
+	},
+	beforeMount () {
+		window.addEventListener('scroll', this.handleScroll)
+	},
+	beforeDestroy () {
+		window.removeEventListener('scroll', this.handleScroll)
 	}
 }
 </script>
