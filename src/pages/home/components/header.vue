@@ -21,15 +21,15 @@
 import { mapState} from 'vuex'
 
 export default {
-	name: 'HomeHeader',
-	// mapState是指把vuex的数据映射到当前组件的computed计算属性里	
-	computed: {
-		...mapState(['city'])
-		// ...mapGetters(['doubleCity'])
-	}
-	// props: {
-	// 	city: String
-	// }
+  name: 'HomeHeader',
+  // mapState是指把vuex的数据映射到当前组件的computed计算属性里
+  computed: {
+    ...mapState(['city'])
+    // ...mapGetters(['doubleCity'])
+  }
+  // props: {
+  // 	city: String
+  // }
 }
 </script>
 
@@ -66,6 +66,5 @@ export default {
 			.arrow-icon
 				font-size: .24rem
 				margin-left: -.04rem
-			
 
 </style>

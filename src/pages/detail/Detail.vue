@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<detail-banner 
+		<detail-banner
 			:sightName="sightName"
 			:bannerImg="bannerImg"
 			:bannerImgs="gallaryImgs"
@@ -17,46 +17,46 @@ import DetailBanner from './components/Banner'
 import DetailHeader from './components/Header'
 import DetailList from './components/List'
 import axios from 'axios'
- 
+
 export default {
-	name: 'Detail',
-	components: {
-		DetailBanner,
-		DetailHeader,
-		DetailList
-	},
-	data () {
-		return {
-			sightName: '',
-			bannerImg: '',
-			gallaryImgs: [],
-			list: []
-		}
-	},
-	methods: {
-		getDetailInfo () {
-			// this.$route.params.id 获取路由配置项中 动态路由url携带的id参数
-			// axios.get('/api/detail.json?id=' + this.$route.params.id)
-			axios.get('/api/detail.json', {
-				params: {
-					id: this.$route.params.id
-				}
-			}).then(this.handleGetDataSucc)
-		},
-		handleGetDataSucc (res) {
-			res = res.data
-			if(res.ret && res.data) {
-				const data = res.data
-				this.sightName = data.sightName
-				this.bannerImg = data.bannerImg
-				this.gallaryImgs = data.gallaryImgs
-				this.list = data.categoryList
-			}
-		}
-	},
-	mounted () {
-		this.getDetailInfo()
-	}
+  name: 'Detail',
+  components: {
+    DetailBanner,
+    DetailHeader,
+    DetailList
+  },
+  data () {
+    return {
+      sightName: '',
+      bannerImg: '',
+      gallaryImgs: [],
+      list: []
+    }
+  },
+  methods: {
+    getDetailInfo () {
+      // this.$route.params.id 获取路由配置项中 动态路由url携带的id参数
+      // axios.get('/api/detail.json?id=' + this.$route.params.id)
+      axios.get('/api/detail', {
+        params: {
+          id: this.$route.params.id
+        }
+      }).then(this.handleGetDataSucc)
+    },
+    handleGetDataSucc (res) {
+      res = res.data
+      if (res.ret && res.data) {
+        const data = res.data
+        this.sightName = data.sightName
+        this.bannerImg = data.bannerImg
+        this.gallaryImgs = data.gallaryImgs
+        this.list = data.categoryList
+      }
+    }
+  },
+  mounted () {
+    this.getDetailInfo()
+  }
 }
 </script>
 

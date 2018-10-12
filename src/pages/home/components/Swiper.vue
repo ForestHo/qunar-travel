@@ -13,23 +13,23 @@
 
 <script>
 export default {
-	name: 'HomeSwiper',
-    props: {
-        list: Array
-    },
-	data () {
-		return {
-			swiperOption: {
-                pagination: '.swiper-pagination',
-                loop: true
-            }
-		}
-	},
-    computed: {
-        showSwiper () {
-            return this.list.length
-        }
+  name: 'HomeSwiper',
+  props: {
+    list: Array
+  },
+  data () {
+    return {
+      swiperOption: {
+        pagination: '.swiper-pagination',
+        loop: true
+      }
     }
+  },
+  computed: {
+    showSwiper () {
+      return this.list.length
+    }
+  }
 }
 </script>
 
@@ -44,10 +44,3 @@ export default {
         .swiper-img
             width: 100%
 </style>
-
-
-
-
-
-
-

@@ -2,7 +2,7 @@
 	<div class="icons">
 		 <swiper :options="swiperOption">
 		 	<swiper-slide v-for="(page, index) of pages" :key="index">
-				<div 
+				<div
 					class="icon"
 					v-for="item of page"
 					:key="item.id">
@@ -18,30 +18,30 @@
 
 <script>
 export default {
-	name: 'HomeIcons',
-	props: {
-		list: Array
-	},
-	data () {
-		return {
-			swiperOption: {
-				autoplay: false
-			}
-		}
-	},
-	computed: {
-		pages () {
-			const pages = []
-			this.list.forEach((item, index) => {
-				const page = Math.floor(index / 8)
-				if(!pages[page]) {
-					pages[page] = []
-				}
-				pages[page].push(item)
-			})
-			return pages
-		}
-	}
+  name: 'HomeIcons',
+  props: {
+    list: Array
+  },
+  data () {
+    return {
+      swiperOption: {
+        autoplay: false
+      }
+    }
+  },
+  computed: {
+    pages () {
+      const pages = []
+      this.list.forEach((item, index) => {
+        const page = Math.floor(index / 8)
+        if (!pages[page]) {
+          pages[page] = []
+        }
+        pages[page].push(item)
+      })
+      return pages
+    }
+  }
 }
 </script>
 
@@ -82,5 +82,5 @@ export default {
 				text-align: center
 				color: $darkTextColor
 				ellipsis()
-			
+
 </style>

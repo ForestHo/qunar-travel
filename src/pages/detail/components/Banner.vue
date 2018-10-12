@@ -11,8 +11,8 @@
 			</div>
 		</div>
 		<fade-animation>
-			<common-gallary 
-				:imgs="bannerImgs" 
+			<common-gallary
+				:imgs="bannerImgs"
 				v-show="showGallary"
 				@gallary-close="handleGallaryClose"
 				></common-gallary>
@@ -24,29 +24,29 @@
 import CommonGallary from 'common/gallary/Gallary'
 import FadeAnimation from 'common/fade/FadeAnimation'
 export default {
-	name: 'DetailBanner',
-	props: {
-		sightName: String,
-		bannerImg: String,
-		bannerImgs: Array
-	},
-	data () {
-		return {
-			showGallary: false
-		}
-	},
-	methods: {
-		handleBannerClick () {
-			this.showGallary = true
-		},
-		handleGallaryClose () {
-			this.showGallary = false
-		}
-	},
-	components: {
-		CommonGallary,
-		FadeAnimation
-	}
+  name: 'DetailBanner',
+  props: {
+    sightName: String,
+    bannerImg: String,
+    bannerImgs: Array
+  },
+  data () {
+    return {
+      showGallary: false
+    }
+  },
+  methods: {
+    handleBannerClick () {
+      this.showGallary = true
+    },
+    handleGallaryClose () {
+      this.showGallary = false
+    }
+  },
+  components: {
+    CommonGallary,
+    FadeAnimation
+  }
 }
 </script>
 

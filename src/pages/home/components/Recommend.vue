@@ -5,9 +5,9 @@
 			<!-- 使用tag="li"，这个router-link标签vue就不会把渲染成
 				一个a标签，而是替换成一个li标签；
 				:to="'/detail/'+item.id" 动态绑定路由跳转的url-->
-			<router-link 
+			<router-link
 				tag="li"
-				class="item border-bottom" 
+				class="item border-bottom"
 				v-for="item of list"
 				:key="item.id"
 				:to="'/detail/'+item.id"
@@ -25,17 +25,17 @@
 
 <script>
 export default {
-	name: 'HomeRecommend',
-	props: {
-		list: Array
-	}
+  name: 'HomeRecommend',
+  props: {
+    list: Array
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
 	@import '~styles/mixins.styl'
 	.title
-		margin-top: .2rem 
+		margin-top: .2rem
 		line-height: .8rem
 		background: #eee
 		text-indent: .2rem
@@ -46,7 +46,7 @@ export default {
 		.item-img
 			width: 1.7rem
 			height: 1.7rem
-			padding .1rem 
+			padding .1rem
 		.item-info
 			flex: 1
 			padding .1rem
@@ -63,7 +63,7 @@ export default {
 				line-height: .44rem
 				margin-top: .16rem
 				background: #ff9300
-				padding 0 .2rem 
+				padding 0 .2rem
 				border-radius: .06rem
 				color: #fff
 </style>

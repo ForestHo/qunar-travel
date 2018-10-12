@@ -12,7 +12,7 @@
 			<div class="area">
 				<div class="title border-topbottom">热门城市</div>
 				<div class="button-list">
-					<div class="button-wrapper" 
+					<div class="button-wrapper"
 						 v-for="item of hotcities"
 						 :key="item.id"
 						 @click="handleCityClick(item.name)"
@@ -21,15 +21,15 @@
 					</div>
 				</div>
 			</div>
-			<div class="area" 
-				 v-for="(item, key) of cities" 
+			<div class="area"
+				 v-for="(item, key) of cities"
 				 :key="key"
 				 :ref="key"
 				 >
 				<div class="title border-topbottom">{{key}}</div>
 				<div class="item-list">
-					<div 
-						class="item border-bottom" 
+					<div
+						class="item border-bottom"
 						v-for="innerItem of item"
 						:key="innerItem.id"
 						@click="handleCityClick(innerItem.name)"
@@ -47,50 +47,50 @@ import BScroll from 'better-scroll'
 import { mapState, mapMutations } from 'vuex'
 
 export default {
-	name: 'CityList',
-	data () {
-		return {
-			scroll: {}
-		}
-	},
-	// 把vuex中的city公用的数据映射到当前组件的currentCity计算属性里
-	computed: {
-		...mapState({
-			currentCity: 'city'
-		})
-	},	
-	methods: {
-		handleCityClick (city) {
-			// console.log(city);
-			// changeCity 是action
-			// this.$store.dispatch('changeCity', city)
-			// this.$store.commit('changeCity', city)
-			this.changeCity(city)
-			this.$router.push('/')
-		},
-		// 有一个mutation叫作changeCity，然后把这个mutation映射到
-		// 当前组件的changeCity方法里
-		...mapMutations(['changeCity'])
-	},
-	props: {
-		hotcities: Array,
-		cities: Object,
-		letter: String
-	},
-	mounted () {
-		this.scroll = new BScroll(this.$refs.wrapper,{ mouseWheel: true, click: true, tap: true })
-	},
-	watch: {
-		letter () {
-			// 使用循环输出的ref是一个数组
-			//  element下面是一个数组[div.area]
-			if(this.letter){
-				const element = this.$refs[this.letter][0]
-				// console.log(element[0]);
-				this.scroll.scrollToElement(element)
-			}
-		}
-	}
+  name: 'CityList',
+  data () {
+    return {
+      scroll: {}
+    }
+  },
+  // 把vuex中的city公用的数据映射到当前组件的currentCity计算属性里
+  computed: {
+    ...mapState({
+      currentCity: 'city'
+    })
+  },
+  methods: {
+    handleCityClick (city) {
+      // console.log(city);
+      // changeCity 是action
+      // this.$store.dispatch('changeCity', city)
+      // this.$store.commit('changeCity', city)
+      this.changeCity(city)
+      this.$router.push('/')
+    },
+    // 有一个mutation叫作changeCity，然后把这个mutation映射到
+    // 当前组件的changeCity方法里
+    ...mapMutations(['changeCity'])
+  },
+  props: {
+    hotcities: Array,
+    cities: Object,
+    letter: String
+  },
+  mounted () {
+    this.scroll = new BScroll(this.$refs.wrapper, { mouseWheel: true, click: true, tap: true })
+  },
+  watch: {
+    letter () {
+      // 使用循环输出的ref是一个数组
+      //  element下面是一个数组[div.area]
+      if (this.letter) {
+        const element = this.$refs[this.letter][0]
+        // console.log(element[0]);
+        this.scroll.scrollToElement(element)
+      }
+    }
+  }
 }
 </script>
 
@@ -133,9 +133,3 @@ export default {
 				line-height: .76rem
 				padding-left: .2rem
 </style>
-
-
-
-
-
-
