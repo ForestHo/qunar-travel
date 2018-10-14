@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     getCityIndfo () {
-      axios.get('/api/cityList?__rnd=1539342877149')
+      axios.get(this.HOST+'/cityList?__rnd=1539342877149')
 				 .then(this.handleGetCityInfoSucc)
     },
     handleGetCityInfoSucc (res) {
