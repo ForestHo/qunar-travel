@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import fastClick from 'fastclick'
+import axios from 'axios'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'babel-polyfill'
 import store from './store'
@@ -16,6 +17,8 @@ Vue.config.productionTip = false
 fastClick.attach(document.body)
 Vue.use(VueAwesomeSwiper)
 Vue.prototype.HOST = '/api'
+axios.defaults.headers.post["Content-type"]="application/json";
+Vue.prototype.$axios=axios;
 /* eslint-disable no-new */
 /* 	1.定义了一个vue的根实例，它挂载在id为app的元素上,
 	index.html有一个id为app的div，所以这里的挂载点
