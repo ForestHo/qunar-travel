@@ -60,7 +60,7 @@ export default {
     getHomeInfo () {
       // axios.get('/api/index.json?city=' + this.city)
       // 	 .then(this.getHomeInfoSucc)
-      axios.get('/api/home')
+      axios.get('/api/cityList?__rnd=1539342877149')
 				 .then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc (res) {

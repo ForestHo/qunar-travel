@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<city-header></city-header>
-		<city-search :cities="cities"></city-search>
+		<!-- <city-search :cities="cities"></city-search> -->
 		<city-list
 			:cities="cities"
 			:hotcities="hotCities"
@@ -31,22 +31,22 @@ export default {
   },
   data () {
     return {
-      cities: {},
+      cities: [],
       hotCities: [],
       letter: ''
     }
   },
   methods: {
     getCityIndfo () {
-      axios.get('/api/citys')
+      axios.get('/api/cityList?__rnd=1539342877149')
 				 .then(this.handleGetCityInfoSucc)
     },
     handleGetCityInfoSucc (res) {
+      // console.log(res)
       res = res.data
-      if (res.ret && res.data) {
-        const data = res.data
-        this.cities = data.cities
-        this.hotCities = data.hotCities
+      if (res.status.code === 200 && res.status.desc === 'succ') {
+        this.cities = res.cityData.cities
+        this.hotCities = res.cityData.hotCityes
       }
     },
     handleLetterChange (letter) {

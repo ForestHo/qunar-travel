@@ -18,7 +18,7 @@
 export default {
   name: 'CityAlphabet',
   props: {
-    cities: Object
+    cities: Array
   },
   data () {
     return {
@@ -42,10 +42,11 @@ export default {
   computed: {
     letters () {
       const letters = []
-      for (let i in this.cities) {
-        letters.push(i)
-      }
-      // console.log(letters);
+      this.cities.forEach((item,index)=> {
+        if(!letters.includes(item.firstLetter)){
+          letters.push(item.firstLetter)
+        }
+      });
       return letters
     }
   },

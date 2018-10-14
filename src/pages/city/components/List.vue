@@ -17,12 +17,12 @@
 						 :key="item.id"
 						 @click="handleCityClick(item.name)"
 						 >
-						<div class="button">{{item.name}}</div>
+						<div class="button">{{item.cityName}}</div>
 					</div>
 				</div>
 			</div>
 			<div class="area"
-				 v-for="(item, key) of cities"
+				 v-for="(item, key) of newCities"
 				 :key="key"
 				 :ref="key"
 				 >
@@ -30,11 +30,11 @@
 				<div class="item-list">
 					<div
 						class="item border-bottom"
-						v-for="innerItem of item"
-						:key="innerItem.id"
-						@click="handleCityClick(innerItem.name)"
+						v-for="innerItem in item"
+						:key="innerItem.cityCode"
+						@click="handleCityClick(innerItem.cityName)"
 						>
-						{{innerItem.name}}
+						{{innerItem.cityName}}
 					</div>
 				</div>
 			</div>
@@ -57,7 +57,21 @@ export default {
   computed: {
     ...mapState({
       currentCity: 'city'
-    })
+    }),
+    newCities(){
+    	const newCityObj = {}
+    	this.cities.forEach((item, index)=>{
+    		if(!newCityObj.hasOwnProperty(item.firstLetter)){
+    			newCityObj[item.firstLetter]= []
+    		}
+    		newCityObj[item.firstLetter].push({
+    			cityCode:item.cityCode,
+    			cityName: item.cityName,
+    			firstLetter:item.firstLetter
+    		})
+    	})
+    	return newCityObj
+    }
   },
   methods: {
     handleCityClick (city) {
@@ -74,7 +88,7 @@ export default {
   },
   props: {
     hotcities: Array,
-    cities: Object,
+    cities: Array,
     letter: String
   },
   mounted () {

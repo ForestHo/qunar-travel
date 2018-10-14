@@ -12,10 +12,11 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
         '/api': {
-            target: 'http://rapapi.org/mockjsdata/37172'
-            // pathRewrite: {
-            //     '^/api': '/static/mock'
-            // }
+            target: 'http://touch.qunar.com/h5/group/ajax',
+            changeOrigin: true,
+            pathRewrite: {
+                '^/api': ''
+            }
         }
     },
 
