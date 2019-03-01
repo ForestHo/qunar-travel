@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
         '/api': {
-            target: 'http://touch.qunar.com/h5/group/ajax',
+            target: 'https://raw.githubusercontent.com/ForestHo/mock_web_json/master/',
             changeOrigin: true,
             pathRewrite: {
                 '^/api': ''

@@ -31,22 +31,28 @@ export default {
   },
   data () {
     return {
-      cities: [],
+      cities: {},
       hotCities: [],
       letter: ''
     }
   },
   methods: {
     getCityIndfo () {
-      axios.get(this.HOST+'/cityList?__rnd=1539342877149')
+      // axios.get(this.HOST+'/city.json')
+      axios.get(this.baseURL+'city.json')
 				 .then(this.handleGetCityInfoSucc)
     },
     handleGetCityInfoSucc (res) {
-      // console.log(res)
-      res = res.data
-      if (res.status.code === 200 && res.status.desc === 'succ') {
-        this.cities = res.cityData.cities
-        this.hotCities = res.cityData.hotCityes
+      console.log('city',res)
+
+      if (res.status === 200) {
+        res = res.data
+        console.log('hello',res);
+
+        this.cities = res.data.cities
+        this.hotCities = res.data.hotCities
+        console.log(this.hotCities);
+
       }
     },
     handleLetterChange (letter) {

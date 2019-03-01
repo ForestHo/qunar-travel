@@ -37,7 +37,7 @@ export default {
     getDetailInfo () {
       // this.$route.params.id 获取路由配置项中 动态路由url携带的id参数
       // axios.get('/api/detail.json?id=' + this.$route.params.id)
-      axios.get('/api/detail', {
+      axios.get(this.baseURL+'detail.json', {
         params: {
           id: this.$route.params.id
         }

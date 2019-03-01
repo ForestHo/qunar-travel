@@ -17,6 +17,8 @@ Vue.config.productionTip = false
 fastClick.attach(document.body)
 Vue.use(VueAwesomeSwiper)
 Vue.prototype.HOST = '/api'
+Vue.prototype.baseURL = process.env.BASE_API;
+Vue.config.devtools = true  // vue devtools调试功能
 axios.defaults.headers.post["Content-type"]="application/json";
 Vue.prototype.$axios=axios;
 /* eslint-disable no-new */
@@ -29,7 +31,7 @@ Vue.prototype.$axios=axios;
 	了这个App局部组件
 	3.template模板里面直接把<App/>这个局部组件渲染出来
 	4.router,路由配置 */
-/* 路由就是根据网址的不同，返回不同的内容给用户 */ 
+/* 路由就是根据网址的不同，返回不同的内容给用户 */
 new Vue({
   el: '#app',
   router,

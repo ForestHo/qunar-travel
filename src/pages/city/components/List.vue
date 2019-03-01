@@ -17,7 +17,7 @@
 						 :key="item.id"
 						 @click="handleCityClick(item.name)"
 						 >
-						<div class="button">{{item.cityName}}</div>
+						<div class="button">{{item.name}}</div>
 					</div>
 				</div>
 			</div>
@@ -59,17 +59,33 @@ export default {
       currentCity: 'city'
     }),
     newCities(){
-    	const newCityObj = {}
-    	this.cities.forEach((item, index)=>{
-    		if(!newCityObj.hasOwnProperty(item.firstLetter)){
-    			newCityObj[item.firstLetter]= []
+      const newCityObj = {}
+      for (const key in this.cities) {
+        // console.log('city key',key);
+        this.cities[key].forEach((item, index)=>{
+    		if(!newCityObj.hasOwnProperty(key)){
+    			newCityObj[key]= []
     		}
-    		newCityObj[item.firstLetter].push({
-    			cityCode:item.cityCode,
-    			cityName: item.cityName,
-    			firstLetter:item.firstLetter
+    		newCityObj[key].push({
+    			cityCode:item.id,
+    			cityName: item.name,
+    			firstLetter:key
     		})
     	})
+      }
+    	// this.cities.forEach((item, index)=>{
+        // for (const key in this.cities) {
+        //   if(!newCityObj.hasOwnProperty(key)){
+        //     newCityObj[key]= []
+        //   }
+        //   newCityObj[key].push({
+        //     // cityCode:item.cityCode,
+        //     cityName: item.cityName,
+        //     firstLetter:key
+        //   })
+        // }
+
+    	// })
     	return newCityObj
     }
   },
@@ -88,7 +104,7 @@ export default {
   },
   props: {
     hotcities: Array,
-    cities: Array,
+    cities: Object,
     letter: String
   },
   mounted () {
